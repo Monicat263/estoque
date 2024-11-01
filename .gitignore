@@ -1,0 +1,11 @@
+# Diretório de build
+target/
+
+# Arquivos temporários do IDE
+.idea/
+.vscode/
+
+# Arquivos de cache
+node_modules/
+.cache/
+
