@@ -17,20 +17,22 @@ public class Main {
         Locale.setDefault(Locale.US);
         Scanner sc = new Scanner(System.in);
 
-        Product product = new Product();
         System.out.println("Enter product data: ");
         System.out.print("Name: ");
-        product.name = sc.nextLine();
+        String name = sc.nextLine();
         System.out.print("Price: ");
-        product.price = sc.nextDouble();
+        double price = sc.nextDouble();
         System.out.print("Quantity:  ");
-        product.quantity = sc.nextInt();
-        // Utilizaçaão do método toString com a  formatação da saída do objeto product
+        int quantity = sc.nextInt();
+
+        Product product = new Product(name,price,quantity);
+
+        // Utilizaçaão do método toString com a formatação da saída do objeto product
         System.out.println("Product data: "+ product);
         System.out.printf("");
 
         System.out.printf("Entre the number of products to be added in stock: ");
-        int quantity = sc.nextInt();
+        quantity = sc.nextInt();
         product.addProducts(quantity);
 
         System.out.printf("");
