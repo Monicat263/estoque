@@ -14,10 +14,7 @@ class ProductTest {
 
     @BeforeEach
     void setUp(){
-        product = new Product();
-        product.name = "TV";
-        product.price = 500.00;
-        product.quantity = 2;
+        product = new Product("TV",500,2);
     }
 
     @Test
@@ -43,17 +40,19 @@ class ProductTest {
     @DisplayName("Should throw exception when adding negative quantity")
     void shouldThrowExceptionWhenAddingNegativeQuantity() {
         // Armazenar a quantidade inicial antes da chamada do método
-        int initialQuantity = product.quantity;
+        int initialQuantity = product.getQuantity();
 
-        Exception exception = assertThrows(InvalidProductQuantityException.class, () -> {
-            product.addProducts(-1);
-        });
+        // Testa se a exceção personalizada é lançada para quantidade negativa
+        Exception exception = assertThrows(
+                InvalidProductQuantityException.class,
+                () -> product.addProducts(-1)
+        );
 
         // Verifica se a mensagem da exceção é a esperada
-        assertEquals("Valor inválido", exception.getMessage());
+        assertEquals("Valor inválido.", exception.getMessage());
 
-        // Verifica se a quantidade permanece inalterada
-        assertEquals(initialQuantity, product.quantity); // Verifica se a quantidade permanece inalterada
+        // Verifica se a quantidade não foi alterada
+        assertEquals(initialQuantity, product.getQuantity());
     }
 
     @Test

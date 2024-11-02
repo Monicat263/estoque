@@ -1,7 +1,9 @@
 package entities;
 
 import exceptions.InvalidProductQuantityException;
+import lombok.Data;
 
+@Data
 public class Product {
     public String name;
     public double price;
@@ -19,11 +21,13 @@ public class Product {
     }
 
     public void addProducts(int quantity){
-        if (quantity > 0) {
-            this.quantity += quantity;
-        } else {
-            throw new InvalidProductQuantityException("Valor inválido");
+        if (quantity < 0) {
+            throw new InvalidProductQuantityException("Valor inválido.");
         }
+        else{
+            this.quantity += quantity;
+        }
+
     }
 
     public void removeProducts(int quantity){
